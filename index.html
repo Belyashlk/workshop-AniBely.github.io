@@ -139,9 +139,11 @@
 	</div>
 
     <script>
-        // Функция для загрузки лайков из API
+        const likesUrl = 'https://yourusername.github.io/your-repo/likes.json';
+
+        // Функция для загрузки лайков из JSON файла
         async function loadLikes() {
-            const response = await fetch('http://localhost:3000/likes');
+            const response = await fetch(likesUrl);
             const data = await response.json();
 
             for (const avatar in data) {
@@ -167,14 +169,16 @@
 
             likeCountElement.innerText = `${currentLikes} лайков`;
 
-            // Отправка обновленного количества лайков на сервер
-            await fetch('http://localhost:3000/likes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ avatarId, count: currentLikes })
-            });
+            // Обновление лайков в JSON файле (это нужно делать вручную)
+            // Вы можете использовать GitHub Gists или другой способ для обновления файла
+            await updateLikes(avatarId, currentLikes);
+        }
+
+        // Функция для обновления лайков в JSON файле (вызывается вручную)
+        async function updateLikes(avatarId, count) {
+            // Здесь вы можете реализовать логику для обновления файла likes.json
+            // Например, отправить запрос на сервер, если у вас есть такой
+            console.log(`Обновление лайков для ${avatarId}: ${count}`);
         }
 
         // Загружаем лайки при загрузке страницы
@@ -182,4 +186,3 @@
     </script>
 </body>
 </html>
-
