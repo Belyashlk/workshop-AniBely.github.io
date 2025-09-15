@@ -59,7 +59,7 @@
         }
 
         .like-button {
-            background-color: #ff408100;
+            background-color: #ff4081;
             color: white;
             border: none;
             border-radius: 5px;
@@ -86,8 +86,8 @@
             </a>
             <h2>Hoshi Nakata (Хоши Наката)</h2>
             <h3>Shark girl</h3>
-            <button class="like-button" onclick="toggleLike('avatar1')">❤</button>
-            <div class="like-count" id="likes-avatar1">0 </div>
+            <button class="like-button" onclick="toggleLike('avatar1')">Лайк</button>
+            <div class="like-count" id="likes-avatar1">0 лайков</div>
         </div>
         <div class="avatar-card" id="avatar2">
             <a href="./page/sochi/sochi_page.html">
@@ -95,40 +95,40 @@
             </a>
             <h2>Sochi Delatan (Сочи Делатан)</h2>
             <h3>Orca girl</h3>
-            <button class="like-button" onclick="toggleLike('avatar2')">❤</button>
-            <div class="like-count" id="likes-avatar2">0 </div>
+            <button class="like-button" onclick="toggleLike('avatar2')">Лайк</button>
+            <div class="like-count" id="likes-avatar2">0 лайков</div>
         </div>
         <div class="avatar-card" id="avatar3">
             <a href="avatar3_page.html">
                 <img src="avatar3.jpg" alt="Аватар 3">
             </a>
             <h2>Аватар 3</h2>
-            <button class="like-button" onclick="toggleLike('avatar3')">❤</button>
-            <div class="like-count" id="likes-avatar3">0 </div>
+            <button class="like-button" onclick="toggleLike('avatar3')">Лайк</button>
+            <div class="like-count" id="likes-avatar3">0 лайков</div>
         </div>
         <div class="avatar-card" id="avatar4">
             <a href="avatar4_page.html">
                 <img src="avatar4.jpg" alt="Аватар 4">
             </a>
             <h2>Аватар 4</h2>
-            <button class="like-button" onclick="toggleLike('avatar4')">❤</button>
-            <div class="like-count" id="likes-avatar4">0 </div>
+            <button class="like-button" onclick="toggleLike('avatar4')">Лайк</button>
+            <div class="like-count" id="likes-avatar4">0 лайков</div>
         </div>
         <div class="avatar-card" id="avatar5">
             <a href="avatar5_page.html">
                 <img src="avatar5.jpg" alt="Аватар 5">
             </a>
             <h2>Аватар 5</h2>
-            <button class="like-button" onclick="toggleLike('avatar5')">❤</button>
-            <div class="like-count" id="likes-avatar5">0 </div>
+            <button class="like-button" onclick="toggleLike('avatar5')">Лайк</button>
+            <div class="like-count" id="likes-avatar5">0 лайков</div>
         </div>
         <div class="avatar-card" id="avatar6">
             <a href="avatar6_page.html">
                 <img src="avatar6.jpg" alt="Аватар 6">
             </a>
             <h2>Аватар 6</h2>
-            <button class="like-button" onclick="toggleLike('avatar6')">❤</button>
-            <div class="like-count" id="likes-avatar6">0 </div>
+            <button class="like-button" onclick="toggleLike('avatar6')">Лайк</button>
+            <div class="like-count" id="likes-avatar6">0 лайков</div>
         </div>
     </div>
 	
@@ -139,16 +139,18 @@
 	</div>
 
     <script>
-        // Функция для загрузки лайков из локального хранилища
-        function loadLikes() {
-            for (let i = 1; i <= 6; i++) {
-                const likes = localStorage.getItem(`likes-avatar${i}`) || 0;
-                document.getElementById(`likes-avatar${i}`).innerText = `${likes} лайков`;
+        // Функция для загрузки лайков из API
+        async function loadLikes() {
+            const response = await fetch('http://localhost:3000/likes');
+            const data = await response.json();
+
+            for (const avatar in data) {
+                document.getElementById(`likes-${avatar}`).innerText = `${data[avatar]} лайков`;
             }
         }
 
         // Функция для переключения лайка
-        function toggleLike(avatarId) {
+        async function toggleLike(avatarId) {
             const likeCountElement = document.getElementById(`likes-${avatarId}`);
             let currentLikes = parseInt(likeCountElement.innerText);
             const userLiked = localStorage.getItem(`liked-${avatarId}`) === 'true';
@@ -163,8 +165,16 @@
                 localStorage.setItem(`liked-${avatarId}`, 'true');
             }
 
-            likeCountElement.innerText = `${currentLikes} `;
-            localStorage.setItem(`likes-${avatarId}`, currentLikes);
+            likeCountElement.innerText = `${currentLikes} лайков`;
+
+            // Отправка обновленного количества лайков на сервер
+            await fetch('http://localhost:3000/likes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ avatarId, count: currentLikes })
+            });
         }
 
         // Загружаем лайки при загрузке страницы
@@ -172,3 +182,4 @@
     </script>
 </body>
 </html>
+
