@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Витрина аватаров от Hoshi_N</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(45deg, hsl(240 3.7% 15.9%), hsl(0deg 0% 0%));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            z-index: 10;
+            position: relative;
+            padding: 20px;
+        }
+
+        .avatar-card {
+            background: hsl(240deg 3.7% 15.9% / 10%);
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+            width: 220px;
+            text-align: center;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .avatar-card:hover {
+            transform: scale(1.05);
+        }
+
+        .avatar-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        h2, h3 {
+            color: white;
+        }
+
+        .like-button {
+            background-color: #ff408100;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .like-count {
+            color: white;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center; color: white;">Витрина аватаров</h1>
+        <p style="text-align: center; color: white;">Портфолио Hoshi_N</p>
+    </header>
+    <div class="container">
+        <div class="avatar-card" id="avatar1">
+            <a href="./page/hoshi/hoshi_page.html">
+                <img src="./page/hoshi/img.png" alt="Аватар 1">
+            </a>
+            <h2>Hoshi Nakata (Хоши Наката)</h2>
+            <h3>Shark girl</h3>
+            <button class="like-button" onclick="toggleLike('avatar1')">❤</button>
+            <div class="like-count" id="likes-avatar1">0 </div>
+        </div>
+        <div class="avatar-card" id="avatar2">
+            <a href="./page/sochi/sochi_page.html">
+                <img src="./page/sochi/img.png" alt="Аватар 2">
+            </a>
+            <h2>Sochi Delatan (Сочи Делатан)</h2>
+            <h3>Orca girl</h3>
+            <button class="like-button" onclick="toggleLike('avatar2')">❤</button>
+            <div class="like-count" id="likes-avatar2">0 </div>
+        </div>
+        <div class="avatar-card" id="avatar3">
+            <a href="avatar3_page.html">
+                <img src="avatar3.jpg" alt="Аватар 3">
+            </a>
+            <h2>Аватар 3</h2>
+            <button class="like-button" onclick="toggleLike('avatar3')">❤</button>
+            <div class="like-count" id="likes-avatar3">0 </div>
+        </div>
+        <div class="avatar-card" id="avatar4">
+            <a href="avatar4_page.html">
+                <img src="avatar4.jpg" alt="Аватар 4">
+            </a>
+            <h2>Аватар 4</h2>
+            <button class="like-button" onclick="toggleLike('avatar4')">❤</button>
+            <div class="like-count" id="likes-avatar4">0 </div>
+        </div>
+        <div class="avatar-card" id="avatar5">
+            <a href="avatar5_page.html">
+                <img src="avatar5.jpg" alt="Аватар 5">
+            </a>
+            <h2>Аватар 5</h2>
+            <button class="like-button" onclick="toggleLike('avatar5')">❤</button>
+            <div class="like-count" id="likes-avatar5">0 </div>
+        </div>
+        <div class="avatar-card" id="avatar6">
+            <a href="avatar6_page.html">
+                <img src="avatar6.jpg" alt="Аватар 6">
+            </a>
+            <h2>Аватар 6</h2>
+            <button class="like-button" onclick="toggleLike('avatar6')">❤</button>
+            <div class="like-count" id="likes-avatar6">0 </div>
+        </div>
+    </div>
+	
+	<div>
+	        <p style="text-align: center; color: white;">Мое портфолио созданных мной кастомных аватаров для VRChat.</p>
+			<p></p>
+			<a href="https://vrchat.com/home/avatar/avtr_67015212-8fea-4479-9c22-4fbb11ab2df2" class="back-button">Ссылка на VrChat страницу</a>
+	</div>
+
+    <script>
+        // Функция для загрузки лайков из локального хранилища
+        function loadLikes() {
+            for (let i = 1; i <= 6; i++) {
+                const likes = localStorage.getItem(`likes-avatar${i}`) || 0;
+                document.getElementById(`likes-avatar${i}`).innerText = `${likes} лайков`;
+            }
+        }
+
+        // Функция для переключения лайка
+        function toggleLike(avatarId) {
+            const likeCountElement = document.getElementById(`likes-${avatarId}`);
+            let currentLikes = parseInt(likeCountElement.innerText);
+            const userLiked = localStorage.getItem(`liked-${avatarId}`) === 'true';
+
+            if (userLiked) {
+                // Убрать лайк
+                currentLikes -= 1;
+                localStorage.setItem(`liked-${avatarId}`, 'false');
+            } else {
+                // Поставить лайк
+                currentLikes += 1;
+                localStorage.setItem(`liked-${avatarId}`, 'true');
+            }
+
+            likeCountElement.innerText = `${currentLikes} `;
+            localStorage.setItem(`likes-${avatarId}`, currentLikes);
+        }
+
+        // Загружаем лайки при загрузке страницы
+        window.onload = loadLikes;
+    </script>
+</body>
+</html>
