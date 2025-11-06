@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunaga Nazaki (Сунага Назаки)</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, hsl(240 3.7% 15.9%), hsl(0deg 0% 0%));; /* Цвет фона страницы */
+            margin: 0;
+            padding: 0;
+            color: #333; /* Цвет текста */
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: hsl(240 3.7% 15.9%); /* Белый фон для контейнера */
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cover-image {
+            width: 100%; /* Ширина обложки на 100% */
+            border-radius: 10px;
+        }
+        h1 {
+            color: white;
+        }
+        .description {
+            margin: 20px 0;
+            line-height: 1.6; /* Интервал между строками */
+        }
+        .gallery {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            display: none; /* Скрываем все изображения по умолчанию */
+            border-radius: 10px;
+        }
+        .gallery img.active {
+            display: block; /* Показываем только активное изображение */
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .arrow.left {
+            left: 10px;
+        }
+        .arrow.right {
+            right: 10px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00796b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #005b4f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sunaga Nazaki (Сунага Назаки)</h1>
+    </header>
+
+    <div class="container">
+        <img src="img.png" alt="Обложка Аватар 1" class="cover-image"> 
+		
+		<h2>Галерея</h2>
+        <div class="gallery">
+            <img src="1.png" alt="Изображение 1" class="active"> 
+            <img src="2.png" alt="Изображение 2"> 
+            <img src="3.png" alt="Изображение 3"> 
+            <img src="4.png" alt="Изображение 4">
+            <img src="5.png" alt="Изображение 5">
+            <img src="6.png" alt="Изображение 6">
+            <img src="7.png" alt="Изображение 7">
+            <img src="8.png" alt="Изображение 8">
+            <img src="9.png" alt="Изображение 9">
+            <img src="10.png" alt="Изображение 10">
+            <img src="11.png" alt="Изображение 11">
+            <img src="12.png" alt="Изображение 12">
+            <img src="13.png" alt="Изображение 13">
+            <img src="14.png" alt="Изображение 14">
+            <img src="15.png" alt="Изображение 13">
+            <img src="16.png" alt="Изображение 13">
+            <img src="17.png" alt="Изображение 13">
+            <img src="18.png" alt="Изображение 13">
+            <img src="19.png" alt="Изображение 13">
+            <img src="20.png" alt="Изображение 13">
+            <img src="21.png" alt="Изображение 13">
+            <img src="22.png" alt="Изображение 13">
+            <img src="23.png" alt="Изображение 13">
+            <img src="24.png" alt="Изображение 13">
+            <img src="25.png" alt="Изображение 13">
+            <img src="26.png" alt="Изображение 13">
+            <img src="27.png" alt="Изображение 13">
+            <img src="28.png" alt="Изображение 13">
+            <img src="29.png" alt="Изображение 13">
+            <img src="30.png" alt="Изображение 13">
+            <img src="31.png" alt="Изображение 13">
+            <img src="32.png" alt="Изображение 13">
+            <img src="33.png" alt="Изображение 13">		
+            <button class="arrow left" onclick="changeImage(-1)">&#10094;</button>
+            <button class="arrow right" onclick="changeImage(1)">&#10095;</button>
+        </div>
+		
+        <div class="description">
+            <h2>Описание</h2>
+            <p>Sunaga lived in a world full of colors and joy. Her days were filled with laughter and happy moments with her family. Together, they explored underwater landscapes, played hide and seek among the corals, and enjoyed the simple pleasures of life. The appearance of the shark Hoshi Nakata was unexpected and devastating. Sunaga and her family could not withstand the power and aggression of Hoshi. The attack was a shock, and Sunaga was left alone, experiencing a sense of loss and hopelessness. Her world collapsed, and she found herself in a state of deep mourning. Despite her pain, Sunaga decided to move forward. Working as a maid for a wealthy man with turquoise hair brings her some relief. She finds joy in fulfilling her duties and interacting with her new surroundings. This new beginning helps her gradually cope with her grief and rebuild her life.</p>
+			<p>Сунага жила в мире, полном красок и радости. Её дни были наполнены смехом и счастливыми моментами с семьей. Они вместе исследовали подводные пейзажи, играли в прятки среди кораллов и наслаждались простыми радостями жизни. Появление акулы Хоши Наката стало неожиданным и разрушительным. Сунага и её семья не смогли противостоять силе и агрессии Хоши. Нападение стало шоком, и Сунага осталась одна, испытывая чувство утраты и безысходности. Её мир рухнул, и она оказалась в состоянии глубокой скорби. Сунага, несмотря на свою боль, решила двигаться дальше. Работа служанкой у богатого человека с бирюзовыми волосами приносит ей некоторое облегчение. Она находит радость в выполнении своих обязанностей и общении с новым окружением. Это новое начало помогает ей постепенно справляться с горем и восстанавливать свою жизнь.</p>		
+
+				<h2>СВЕЖИЕ ОБНОВЛЕНИЯ</h2> 
+					<h1>Нет обновлений.</h1>
+					
+       </div>
+
+        <a href="https://vrchat.com/home/avatar/avtr_8f58304c-3433-4b6e-8846-229f71b80c16" class="back-button">Ссылка на VrChat страницу</a>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.gallery img');
+
+        function changeImage(direction) {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + direction + images.length) % images.length; 
+            images[currentIndex].classList.add('active');
+        }
+    </script>
+</body>
+</html>
