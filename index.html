@@ -11,10 +11,11 @@
             padding: 0;
             height: 100%;
             font-family: 'Arial', sans-serif;
-            overflow: hidden;
             background: linear-gradient(45deg, hsl(240 3.7% 15.9%), hsl(0deg 0% 0%));
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes gradientBG {
@@ -24,13 +25,12 @@
         }
 
         .container {
+            flex: 1;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            margin-top: 20px;
-            z-index: 10;
-            position: relative;
             padding: 20px;
+            margin-bottom: 60px;
         }
 
         .avatar-card {
@@ -38,7 +38,8 @@
             border-radius: 10px;
             margin: 10px;
             padding: 10px;
-            width: 220px;
+            width: 400px;
+            height: 600px;
             text-align: center;
             transition: transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -58,19 +59,34 @@
             color: white;
         }
 
-        .like-button {
-            background-color: #ff4081;
+        footer {
+            background-color: hsl(240deg 3.7% 10%);
             color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-            margin-top: 10px;
+            text-align: center;
+            padding: 7px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
         }
 
-        .like-count {
+        footer a {
             color: white;
-            margin-top: 5px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        .section-title {
+            color: white;
+            text-align: center;
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -79,110 +95,71 @@
         <h1 style="text-align: center; color: white;">Витрина аватаров</h1>
         <p style="text-align: center; color: white;">Портфолио Hoshi_N</p>
     </header>
-    <div class="container">
-        <div class="avatar-card" id="avatar1">
-            <a href="./page/hoshi/hoshi_page.html">
-                <img src="./page/hoshi/img.png" alt="Аватар 1">
-            </a>
-            <h2>Hoshi Nakata (Хоши Наката)</h2>
-            <h3>Shark girl</h3>
-            <button class="like-button" onclick="toggleLike('avatar1')">Лайк</button>
-            <div class="like-count" id="likes-avatar1">0 лайков</div>
-        </div>
-        <div class="avatar-card" id="avatar2">
-            <a href="./page/sochi/sochi_page.html">
-                <img src="./page/sochi/img.png" alt="Аватар 2">
-            </a>
-            <h2>Sochi Delatan (Сочи Делатан)</h2>
-            <h3>Orca girl</h3>
-            <button class="like-button" onclick="toggleLike('avatar2')">Лайк</button>
-            <div class="like-count" id="likes-avatar2">0 лайков</div>
-        </div>
-        <div class="avatar-card" id="avatar3">
-            <a href="avatar3_page.html">
-                <img src="avatar3.jpg" alt="Аватар 3">
-            </a>
-            <h2>Аватар 3</h2>
-            <button class="like-button" onclick="toggleLike('avatar3')">Лайк</button>
-            <div class="like-count" id="likes-avatar3">0 лайков</div>
-        </div>
-        <div class="avatar-card" id="avatar4">
-            <a href="avatar4_page.html">
-                <img src="avatar4.jpg" alt="Аватар 4">
-            </a>
-            <h2>Аватар 4</h2>
-            <button class="like-button" onclick="toggleLike('avatar4')">Лайк</button>
-            <div class="like-count" id="likes-avatar4">0 лайков</div>
-        </div>
-        <div class="avatar-card" id="avatar5">
-            <a href="avatar5_page.html">
-                <img src="avatar5.jpg" alt="Аватар 5">
-            </a>
-            <h2>Аватар 5</h2>
-            <button class="like-button" onclick="toggleLike('avatar5')">Лайк</button>
-            <div class="like-count" id="likes-avatar5">0 лайков</div>
-        </div>
-        <div class="avatar-card" id="avatar6">
-            <a href="avatar6_page.html">
-                <img src="avatar6.jpg" alt="Аватар 6">
-            </a>
-            <h2>Аватар 6</h2>
-            <button class="like-button" onclick="toggleLike('avatar6')">Лайк</button>
-            <div class="like-count" id="likes-avatar6">0 лайков</div>
+    
+    <div class="section">
+        <h2 class="section-title">В общем доступе</h2>
+        <div class="container">
+            <div class="avatar-card">
+                <a href="./page/hoshi/hoshi_page.html">
+                    <img src="./page/hoshi/img.png" alt="Аватар 1">
+                </a>
+                <h2>Hoshi Nakata (Хоши Наката)</h2>
+                <h3>Хоши Наката — самая старая и загадочная дама, появившаяся, по легендам, из тени. На первый взгляд, она выглядит улыбчивой и доброй бабушкой, но за этой милой улыбкой скрываются тайны семидесятилетней жизни.</h3>
+            </div>
+            <div class="avatar-card">
+                <a href="./page/sochi/sochi_page.html">
+                    <img src="./page/sochi/img.png" alt="Аватар 2">
+                </a>
+                <h2>Sochi Delatan (Сочи Делатан)</h2>
+                <h3>Сочи Делатан — касатка и одна из служанок Качи Хосошино, обладающая стойкостью и харизмой. Она не из тех, с кем стоит обращаться легкомысленно.</h3>
+            </div>
+            <div class="avatar-card">
+                <a href="./page/sunaga/sunaga_page.html">
+                    <img src="./page/sunaga/img.png" alt="Аватар 3">
+                </a>
+                <h2>Sunaga Nazaki (Сунага Назаки)</h2>
+                <h3>Сунага — жительница яркого и радостного подводного мира, где её дни были полны смеха и приключений с семьей.</h3>
+            </div>
+            <div class="avatar-card">
+                <a href="./page/tunle/tunle_page.html">
+                    <img src="./page/tunle/img.png" alt="Аватар 4">
+                </a>
+                <h2>Tunle Aredlon (Тунле Аредлон)</h2>
+                <h3>Тунле Аредион — молодая девушка с необычной, почти мистической внешностью. нле не выглядит неуклюжей или медлительной; напротив, в её движениях чувствуется грация и сила, присущая молодому, полному энергии существу.</h3>
+            </div>
         </div>
     </div>
-	
-	<div>
-	        <p style="text-align: center; color: white;">Мое портфолио созданных мной кастомных аватаров для VRChat.</p>
-			<p></p>
-			<a href="https://vrchat.com/home/avatar/avtr_67015212-8fea-4479-9c22-4fbb11ab2df2" class="back-button">Ссылка на VrChat страницу</a>
-	</div>
 
-    <script>
-        const likesUrl = 'https://yourusername.github.io/your-repo/likes.json';
+    <div class="section">
+        <h2 class="section-title">Аватары на заказ</h2>
+        <div class="container">
+            <div class="avatar-card">
+                <a href="./page/mizuki/mizuki_page.html">
+                    <img src="./page/mizuki/img.png" alt="Аватар 5">
+                </a>
+                <h2>Mizuki Fujiwara (Мизуки Фудзивара)</h2>
+                <h3>Мидзуки Фудзивара — командующий Седьмым Специальным Подразделением Флотилии Лисиц, элитной единицей военно-морских сил Кицунэ.</h3>
+                <h3>Заказ от пользователя: Ливси.</h3>
+            </div>
+        </div>
+    </div>
 
-        // Функция для загрузки лайков из JSON файла
-        async function loadLikes() {
-            const response = await fetch(likesUrl);
-            const data = await response.json();
-
-            for (const avatar in data) {
-                document.getElementById(`likes-${avatar}`).innerText = `${data[avatar]} лайков`;
-            }
-        }
-
-        // Функция для переключения лайка
-        async function toggleLike(avatarId) {
-            const likeCountElement = document.getElementById(`likes-${avatarId}`);
-            let currentLikes = parseInt(likeCountElement.innerText);
-            const userLiked = localStorage.getItem(`liked-${avatarId}`) === 'true';
-
-            if (userLiked) {
-                // Убрать лайк
-                currentLikes -= 1;
-                localStorage.setItem(`liked-${avatarId}`, 'false');
-            } else {
-                // Поставить лайк
-                currentLikes += 1;
-                localStorage.setItem(`liked-${avatarId}`, 'true');
-            }
-
-            likeCountElement.innerText = `${currentLikes} лайков`;
-
-            // Обновление лайков в JSON файле (это нужно делать вручную)
-            // Вы можете использовать GitHub Gists или другой способ для обновления файла
-            await updateLikes(avatarId, currentLikes);
-        }
-
-        // Функция для обновления лайков в JSON файле (вызывается вручную)
-        async function updateLikes(avatarId, count) {
-            // Здесь вы можете реализовать логику для обновления файла likes.json
-            // Например, отправить запрос на сервер, если у вас есть такой
-            console.log(`Обновление лайков для ${avatarId}: ${count}`);
-        }
-
-        // Загружаем лайки при загрузке страницы
-        window.onload = loadLikes;
-    </script>
+    <div class="section">
+        <h2 class="section-title">В разработке</h2>
+        <div class="container">
+            <h3 style="color: white; text-align: center;">Нет доступных аватаров.</h3>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Контакты: 
+            <a href="https://discord.gg/mn8MWzGp8B">Клуб "ЛАсВК" | Discord</a> | 
+            <a href="https://t.me/Shortshark_Hoshi_n">Telegram</a>
+        </p>
+		<p>Материалы для аватаров:
+		    <a href="https://booth.pm/en">BOOTH</a>
+		</p>
+        <p>&copy; 2025 Hoshi_N. Все права защищены.</p>
+    </footer>
 </body>
 </html>
